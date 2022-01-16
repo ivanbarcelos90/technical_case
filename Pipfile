@@ -9,6 +9,7 @@ pandas = "*"
 sqlalchemy = "*"
 matplotlib = "*"
 folium = "*"
+requests = '*'
 
 [dev-packages]
 

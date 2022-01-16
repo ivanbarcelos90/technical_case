@@ -10,7 +10,7 @@ r4 = requests.get('https://s3.amazonaws.com/data-sprints-eng-test/data-sample_da
 # Write the data at the local repository
 with open(r'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2009-json_corrigido.json', 'wb') as f1:
     f1.write(r1.content)
-
+#
 with open(r'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2010-json_corrigido.json', 'wb') as f2:
     f2.write(r2.content)
 
