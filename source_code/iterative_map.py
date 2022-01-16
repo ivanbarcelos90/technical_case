@@ -26,7 +26,7 @@ query_str = """SELECT top
 # Read data from the database and create a pandas dataframe.
 df = pd.read_sql(query_str, con)
 
-output_file = 'C:\PersonalProjects/TechnicalCase/source_code/html/NYC.html'
+output_file = 'C:\PersonalProjects/technical_case/source_code/html/NYC.html'
 
 map = folium.Map(location=['40.730610', '-73.935242'])
 

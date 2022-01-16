@@ -5,7 +5,7 @@ import connection_class as c
 import webbrowser
 
 # Set up path for the Análise.html file
-output_file = 'C:\PersonalProjects/TechnicalCase/source_code/html/Análise.html'
+output_file = 'C:\PersonalProjects/technical_case/source_code/html/Análise.html'
 
 # create sqlalchemy engine.
 con = c.connection().engine.connect()
@@ -55,7 +55,7 @@ plt.hist(dfq3['TOTAL_AMOUNT'], bins=10)
 plt.xlabel('Total Amount')
 plt.ylabel('Month')
 plt.title('Monthly Distribuition')
-plt.savefig('C:\PersonalProjects/TechnicalCase/source_code/graph/hist.png')
+plt.savefig('C:\PersonalProjects/technical_case/source_code/graph/hist.png')
 
 # Set up the query string to be executed by pandas dataframe
 query_str_q4 = """
@@ -80,7 +80,7 @@ plt.xlabel('Days')
 plt.ylabel('Tip Amount')
 plt.title('Time Series Graph')
 plt.grid()
-plt.savefig('C:\PersonalProjects/TechnicalCase/source_code/graph/time_series.png')
+plt.savefig('C:\PersonalProjects/technical_case/source_code/graph/time_series.png')
 
 # Set up the query string to be executed by pandas dataframe
 query_str_b1 = """
@@ -117,7 +117,7 @@ body = '''
        <font size="4"> Abaixo demonstra a distribuição mensal das corridas pagas em dinheiro de taxi na cidade 
        de Nova York para os anos de 2009-2012.
        <br>       
-       <img src="C:\PersonalProjects/TechnicalCase/source_code/graph/hist.png"></img>
+       <img src="C:\PersonalProjects/technical_case/source_code/graph/hist.png"></img>
        <br>
        <br>
        <font size="5"> Questão 4 <br></font>
@@ -125,7 +125,7 @@ body = '''
        <font size="4"> Abaixo representa o gráfico de série temporal contendo a quantidade de gorjetas de cada dia,
        nos últimos 3 meses de 2012.
        <br>       
-       <img src="C:\PersonalProjects/TechnicalCase/source_code/graph/time_series.png"></img>
+       <img src="C:\PersonalProjects/technical_case/source_code/graph/time_series.png"></img>
        <br>  
        <font size="5"> Questão Bonus 1 <br></font>
        <br>

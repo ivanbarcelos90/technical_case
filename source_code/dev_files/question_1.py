@@ -16,7 +16,3 @@ query_str = """
 # Read data from the database and create a pandas dataframe.
 df = pd.read_sql(query_str, con)
 print(df)
-
-output_file = 'C:\PersonalProjects/TechnicalCase/source_code/Análise.html'
-
-df.to_html()

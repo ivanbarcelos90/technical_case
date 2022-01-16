@@ -84,10 +84,10 @@ engine = create_engine(engine_str)
 con = engine.connect()
 
 # Set up the path variables for the data.
-data_path_2009 = 'C:\PersonalProjects/TechnicalCase/trips/data-sample_data-nyctaxi-trips-2009-json_corrigido.json'
-data_path_2010 = 'C:\PersonalProjects/TechnicalCase/trips/data-sample_data-nyctaxi-trips-2010-json_corrigido.json'
-data_path_2011 = 'C:\PersonalProjects/TechnicalCase/trips/data-sample_data-nyctaxi-trips-2011-json_corrigido.json'
-data_path_2012 = 'C:\PersonalProjects/TechnicalCase/trips/data-sample_data-nyctaxi-trips-2012-json_corrigido.json'
+data_path_2009 = 'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2009-json_corrigido.json'
+data_path_2010 = 'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2010-json_corrigido.json'
+data_path_2011 = 'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2011-json_corrigido.json'
+data_path_2012 = 'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2012-json_corrigido.json'
 
 # Read the json removing all whitespaces characters.
 with open(data_path_2009, 'r') as f1:
