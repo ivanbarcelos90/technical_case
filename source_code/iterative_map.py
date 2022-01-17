@@ -5,6 +5,7 @@ import pandas as pd
 import connection_class as c
 import folium
 import webbrowser
+from os.path import abspath
 
 # create sqlalchemy engine.
 con = c.connection().engine.connect()
@@ -26,7 +27,7 @@ query_str = """SELECT top
 # Read data from the database and create a pandas dataframe.
 df = pd.read_sql(query_str, con)
 
-output_file = 'C:\PersonalProjects/technical_case/source_code/html/NYC.html'
+output_file = abspath('./html/NYC.html')
 
 map = folium.Map(location=['40.730610', '-73.935242'])
 

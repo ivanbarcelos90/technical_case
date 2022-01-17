@@ -3,9 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import connection_class as c
 import webbrowser
+from os.path import abspath
 
 # Set up path for the Análise.html file
-output_file = 'C:\PersonalProjects/technical_case/source_code/html/Análise.html'
+output_file = abspath('./html/Análise.html')
 
 # create sqlalchemy engine.
 con = c.connection().engine.connect()
@@ -55,7 +56,8 @@ plt.hist(dfq3['TOTAL_AMOUNT'], bins=10)
 plt.xlabel('Total Amount')
 plt.ylabel('Month')
 plt.title('Monthly Distribuition')
-plt.savefig('C:\PersonalProjects/technical_case/source_code/graph/hist.png')
+plt_hist = abspath('./graph/hist.png')
+plt.savefig(plt_hist)
 
 # Set up the query string to be executed by pandas dataframe
 query_str_q4 = """
@@ -80,7 +82,8 @@ plt.xlabel('Days')
 plt.ylabel('Tip Amount')
 plt.title('Time Series Graph')
 plt.grid()
-plt.savefig('C:\PersonalProjects/technical_case/source_code/graph/time_series.png')
+plt_plot = abspath('./graph/time_series.png')
+plt.savefig(plt_plot)
 
 # Set up the query string to be executed by pandas dataframe
 query_str_b1 = """
@@ -117,7 +120,7 @@ body = '''
        <font size="4"> Abaixo demonstra a distribuição mensal das corridas pagas em dinheiro de taxi na cidade 
        de Nova York para os anos de 2009-2012.
        <br>       
-       <img src="C:\PersonalProjects/technical_case/source_code/graph/hist.png"></img>
+       <img src={plt_hist}></img>
        <br>
        <br>
        <font size="5"> Questão 4 <br></font>
@@ -125,7 +128,7 @@ body = '''
        <font size="4"> Abaixo representa o gráfico de série temporal contendo a quantidade de gorjetas de cada dia,
        nos últimos 3 meses de 2012.
        <br>       
-       <img src="C:\PersonalProjects/technical_case/source_code/graph/time_series.png"></img>
+       <img src={plt_plot}></img>
        <br>  
        <font size="5"> Questão Bonus 1 <br></font>
        <br>
@@ -139,7 +142,7 @@ body = '''
        </p>   
     </body>
 </html>
-'''.format(q1=q1, q2=q2, b1=b1)
+'''.format(q1=q1, q2=q2, plt_hist=plt_hist, plt_plot=plt_plot,  b1=b1)
 
 # Write html to file
 html = open(output_file, "w")

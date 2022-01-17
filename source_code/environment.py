@@ -1,7 +1,8 @@
 # Import packages for database connection and data processing.
 import pyodbc
 import pandas as pd
-from sqlalchemy import create_engine
+import connection_class as c
+from os.path import abspath
 
 # First Batch - Create a database environment to process the data.
 # Create a string connection for the database.
@@ -79,15 +80,13 @@ dbcursor.close()
 # Load: The dataframe will be sent via sqlalchemy engine connection.
 
 # create sqlalchemy engine
-engine_str = 'mssql://@.\SQLEXPRESS/NYC_Taxi_Trips?driver=ODBC Driver 17 for SQL Server'
-engine = create_engine(engine_str)
-con = engine.connect()
+con = c.connection().connect()
 
 # Set up the path variables for the data.
-data_path_2009 = 'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2009-json_corrigido.json'
-data_path_2010 = 'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2010-json_corrigido.json'
-data_path_2011 = 'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2011-json_corrigido.json'
-data_path_2012 = 'C:\PersonalProjects/technical_case/trips/data-sample_data-nyctaxi-trips-2012-json_corrigido.json'
+data_path_2009 = abspath('../trips/data-sample_data-nyctaxi-trips-2009-json_corrigido.json')
+data_path_2010 = abspath('../trips/data-sample_data-nyctaxi-trips-2010-json_corrigido.json')
+data_path_2011 = abspath('../trips/data-sample_data-nyctaxi-trips-2011-json_corrigido.json')
+data_path_2012 = abspath('../trips/data-sample_data-nyctaxi-trips-2012-json_corrigido.json')
 
 # Read the json removing all whitespaces characters.
 with open(data_path_2009, 'r') as f1:
