@@ -13,10 +13,10 @@ ORDER BY Dinheiro_Arrecadado DESC
 -- Questão 3
 SELECT  YEAR(dropoff_datetime) AS [YEAR]
        ,MONTH(dropoff_datetime) AS [MONTH]
-       ,SUM(total_amount) AS TOTAL_AMOUNT
+       ,total_amount AS TOTAL_AMOUNT
 FROM [NYC_Taxi_Trips].[dbo].[data_sample]
 WHERE payment_type LIKE 'CASH'
-GROUP BY YEAR(dropoff_datetime), MONTH(dropoff_datetime)
+GROUP BY YEAR(dropoff_datetime), MONTH(dropoff_datetime), total_amount
 ORDER BY YEAR(dropoff_datetime), MONTH(dropoff_datetime)
 
 -- Questão 4

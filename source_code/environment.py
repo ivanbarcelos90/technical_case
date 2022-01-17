@@ -25,23 +25,7 @@ db_string = """
                 CREATE DATABASE NYC_Taxi_Trips 
             END     
             
-            USE NYC_Taxi_Trips 
-                                   
-            IF OBJECT_ID(N'dbo.data_vendor_lookup') IS NOT NULL
-                DROP TABLE data_vendor_lookup
-            
-            CREATE TABLE data_vendor_lookup
-            (
-                 [vendor_id] VARCHAR(5) NULL
-                ,[name] VARCHAR(50) NULL
-                ,[address] NVARCHAR(50) NULL
-                ,[city] VARCHAR(20) NULL
-                ,[state] VARCHAR(4) NULL
-                ,[zip] SMALLINT NULL
-                ,[country] VARCHAR(50) NULL
-                ,[contact] NVARCHAR(100) NULL
-                ,[current] VARCHAR(3) NULL
-            )
+            USE NYC_Taxi_Trips  
             
             IF OBJECT_ID(N'dbo.data_sample') IS NOT NULL
                 DROP TABLE data_sample
