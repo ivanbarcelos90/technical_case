@@ -46,9 +46,9 @@ files = os.listdir(trips_path)
 for file in files:
     with open(trips_path + '/' + file, 'r') as f:
         data = f.readlines()  # Read data.
-        data_rmv_space = map(lambda x: x.rstrip(), data)  # Remove spaces.
-        data_json_str = "[" + ','.join(data_rmv_space) + "]"  # Process of data.
-        df_data = pd.read_json(data_json_str)  # Create a pandas dataframe.
-        df_data.to_sql('data_sample', con, if_exists='append')  # Sent the data from the dataframe to the database.
-        print(f'The file "{file}" was processed and sent to the database!')
+    data_rmv_space = map(lambda x: x.rstrip(), data)  # Remove spaces.
+    data_json_str = "[" + ','.join(data_rmv_space) + "]"  # Process of data.
+    df_data = pd.read_json(data_json_str)  # Create a pandas dataframe.
+    df_data.to_sql('data_sample', con, if_exists='append')  # Sent the data from the dataframe to the database.
+    print(f'The file "{file}" was processed and sent to the database!')
 print('All data was transfer to the database!')

@@ -43,7 +43,7 @@
     <font size="5"> Questão 1 <br></font>
     <br>
     <font size="4"> Foi requerido a distância média que é percorrida por viagens com no máximo 2 passageiros.<br>
-        De acordo com os dados, estima-se que a média é de 2.66 km por viagem. <br></font>
+        De acordo com os dados, estima-se que a média é de {q1} km por viagem. <br></font>
     <br>
     <br>
     <font size="5"> Questão 2 <br></font>
@@ -53,32 +53,7 @@
         seguido de VTS e DDS.
         abaixo: <br></font>
     <br>
-    <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Vendors</th>
-      <th>Total_Amount</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>CMT</td>
-      <td>18680732</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>VTS</td>
-      <td>18209836</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>DDS</td>
-      <td>2601728</td>
-    </tr>
-  </tbody>
-</table>
+    {q2}
     <br>
     <font size="5"> Questão 3 <br></font>
     <br>
@@ -87,7 +62,7 @@
         Com o gráfico de distribuição mensal é possível perceber que o período de férias no final do ano <br>
         indicou um aumento dos pagamentos com dinheiro, devido ao aumento de turistas nessa época do ano.</font>
     <br><br>
-    <img src=C:\PersonalProjects\technical_case\source_code\graph\hist.png></img>
+    <img src={plt_hist}></img>
     <br>
     <br>
     <font size="5"> Questão 4 <br></font>
@@ -97,12 +72,12 @@
         Logo, pode-se observar que a quantidade de gorjetas por dia, variou entre 3200 e 3500 gorjetas nos últimos
         3 meses de 2012.
         <br><br>
-        <img src=C:\PersonalProjects\technical_case\source_code\graph\time_series.png></img>
+        <img src={plt_plot}></img>
         <br>
         <font size="5"> Questão Bonus 1 <br></font>
         <br>
         <font size="4"> Foi requerido o tempo médio das corridas nos dias de sábado e domingo.
-            Os dados sujerem que o tempo médio gasto nas corridas nos final de semana varia em torno de 8 minutos.
+            Os dados sujerem que o tempo médio gasto nas corridas nos final de semana varia em torno de {b1} minutos.
             <br>
             <br>
             <br>
