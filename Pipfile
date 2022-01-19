@@ -10,6 +10,7 @@ sqlalchemy = "*"
 matplotlib = "*"
 folium = "*"
 requests = '*'
+clint = "*"
 
 [dev-packages]
 

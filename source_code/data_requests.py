@@ -1,22 +1,29 @@
 # Import package
 import requests
-from os.path import abspath
+from clint.textui import progress
+import os
 
-# Get the data from the hyperlinks and storage at the variables
-r1 = requests.get('https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2009-json_corrigido.json')
-r2 = requests.get('https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2010-json_corrigido.json')
-r3 = requests.get('https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2011-json_corrigido.json')
-r4 = requests.get('https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2012-json_corrigido.json')
 
-# Write the data at the local repository
-with open(abspath('../trips/data-sample_data-nyctaxi-trips-2009-json_corrigido.json'), 'wb') as f1:
-    f1.write(r1.content)
-#
-with open(abspath('../trips/data-sample_data-nyctaxi-trips-2010-json_corrigido.json'), 'wb') as f2:
-    f2.write(r2.content)
+def download_file(filepath):
+    print("Downloading " + filepath)
+    r = requests.get(filepath, stream=True)
+    destination_path = '../trips/' + filepath.split('/')[-1]
 
-with open(abspath('../trips/data-sample_data-nyctaxi-trips-2011-json_corrigido.json'), 'wb') as f3:
-    f3.write(r3.content)
+    with open(destination_path, 'wb') as f:
+        length = int(r.headers.get('content-length'))
+        for chunk in progress.bar(r.iter_content(chunk_size=4096), expected_size=(length / 4096) + 1):
+            if chunk:
+                f.write(chunk)
+                f.flush()
 
-with open(abspath('../trips/data-sample_data-nyctaxi-trips-2012-json_corrigido.json'), 'wb') as f4:
-    f4.write(r4.content)
+
+if __name__ == '__main__':
+    # Get the data from the hyperlinks and storage at the variables
+    files = ['https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2009-json_corrigido.json',
+             'https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2010-json_corrigido.json',
+             'https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2011-json_corrigido.json',
+             'https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2012-json_corrigido.json']
+
+    for file in files:
+        os.makedirs('../trips/', exist_ok=True)
+        download_file(file)

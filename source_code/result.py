@@ -4,52 +4,30 @@ import matplotlib.pyplot as plt
 import connection_class as c
 import webbrowser
 from os.path import abspath
+from query_str import query_str_q1, query_str_q2, query_str_q3, query_str_q4, query_str_b1
 
 # Set up path for the Análise.html file
 output_file = abspath('./html/Análise.html')
 
 # create sqlalchemy engine.
 con = c.connection().engine.connect()
-
-# Set up the query string to be executed by pandas dataframe
-query_str_q1 = """
-            SELECT CAST(AVG(trip_distance) AS DECIMAL(4,2)) AS Distancia_Média
-            FROM [NYC_Taxi_Trips].[dbo].[data_sample]
-            WHERE passenger_count <= 2 
-            """
+print('Connection with sqlalchemy was established!')
 
 # Read data from the database and create a pandas dataframe.
 dfq1 = pd.read_sql(query_str_q1, con)
-
 q1 = dfq1.iat[0, 0]
-
-# Set up the query string to be executed by pandas dataframe
-query_str_q2 = """
-            SELECT TOP 3 [vendor_id] AS Vendors
-                        ,SUM(total_amount) AS Total_Amount
-            FROM [NYC_Taxi_Trips].[dbo].[data_sample]
-            GROUP BY [vendor_id]
-            ORDER BY Total_Amount DESC
-            """
+print('Dataframe for question 1 was created!')
 
 # Read data from the database and create a pandas dataframe.
 dfq2 = pd.read_sql(query_str_q2, con)
+print('Dataframe for question 2 was created!')
 
 q2 = dfq2.to_html()
-
-# Set up the query string to be executed by pandas dataframe
-query_str_q3 = """
-            SELECT  YEAR(dropoff_datetime) AS [YEAR]
-                   ,MONTH(dropoff_datetime) AS [MONTH]
-                   ,total_amount AS TOTAL_AMOUNT
-            FROM [NYC_Taxi_Trips].[dbo].[data_sample]
-            WHERE payment_type LIKE 'CASH'
-            GROUP BY YEAR(dropoff_datetime), MONTH(dropoff_datetime), total_amount
-            ORDER BY YEAR(dropoff_datetime), MONTH(dropoff_datetime)
-            """
+print('Table for question 2 was created!')
 
 # Read data from the database and create a pandas dataframe.
 dfq3 = pd.read_sql(query_str_q3, con)
+print('Dataframe for question 3 was created!')
 
 month_year = dfq3['YEAR'].astype(str) + '-' + dfq3['MONTH'].astype(str)
 
@@ -63,22 +41,11 @@ plt.xticks(rotation=45, ha='right')
 plt.title('Monthly Distribuition')
 plt_hist = abspath('./graph/hist.png')
 plt.savefig(plt_hist)
-
-# Set up the query string to be executed by pandas dataframe
-query_str_q4 = """
-            SELECT  YEAR(dropoff_datetime) AS [YEAR]
-           ,MONTH(dropoff_datetime) AS [MONTH]
-           ,DAY(dropoff_datetime) AS [DAYS]
-           ,COUNT(tip_amount) AS TIP_AMOUNT
-            FROM [NYC_Taxi_Trips].[dbo].[data_sample]
-            WHERE YEAR(dropoff_datetime) = 2012
-            AND   MONTH(dropoff_datetime) IN (8,9,10)
-            GROUP BY YEAR(dropoff_datetime), MONTH(dropoff_datetime),DAY(dropoff_datetime)
-            ORDER BY YEAR(dropoff_datetime),MONTH(dropoff_datetime),DAY(dropoff_datetime)
-            """
+print('Histogram graph for question 3 was created!')
 
 # Read data from the database and create a pandas dataframe.
 dfq4 = pd.read_sql(query_str_q4, con)
+print('Dataframe for question 4 was created!')
 
 # Use matplotlib package to create a time series graph with the dataframe data.
 plt.clf()
@@ -89,26 +56,21 @@ plt.title('Time Series Graph')
 plt.grid()
 plt_plot = abspath('./graph/time_series.png')
 plt.savefig(plt_plot)
-
-# Set up the query string to be executed by pandas dataframe
-query_str_b1 = """
-                   SELECT (AVG(DATEDIFF(SECOND,pickup_datetime,dropoff_datetime)))/60 AS Tempo_Médio
-                   FROM [NYC_Taxi_Trips].[dbo].[data_sample]
-                   WHERE (DATEPART(DW,pickup_datetime) = 1 OR DATEPART(DW,pickup_datetime) = 7)
-                   """
+print('Time series graph for question 1 was created!')
 
 # Read data from the database and create a pandas dataframe.
 dfb1 = pd.read_sql(query_str_b1, con)
-
 b1 = dfb1.iat[0, 0]
+print('Dataframe for question bonus 1 was created!')
 
+# Html string for the body construction of the analises.
 body = '''
 <html>
     <body>
         <title>Análise</title>
         <p><font size="6.5"> Resposta das questões para o case Tecnico da DadoEsfera!<br></font>      
        <br><br>
-       
+
        <font size="4"> 
        Para esse case tecnico foi recebido dados em formato json.<br>
        Logo, opós análises dos dados brutos, optei enviar os dados para um banco de dados local (SQL Server).<br>
@@ -144,7 +106,7 @@ body = '''
        <br>
        <br>        
        </font>
-              
+
        <font size="5"> Questão 1 <br></font>
        <br>      
        <font size="4"> Foi requerido a distância média que é percorrida por viagens com no máximo 2 passageiros.<br>
@@ -194,6 +156,7 @@ body = '''
 </html>
 '''.format(q1=q1, q2=q2, plt_hist=plt_hist, plt_plot=plt_plot,  b1=b1)
 
+print('Open HTML!')
 # Write html to file
 html = open(output_file, "w")
 html.write(body)
