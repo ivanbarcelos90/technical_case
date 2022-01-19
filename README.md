@@ -13,5 +13,5 @@
 
 ## Iterative Map (Bonus Question)
 * You can run iterative_map.py to see the map of New York City with Pickups and theirs respective Dropoffs of the taxis trips of the year 2010.
-* The total samples of the data is 1 million trips. You can change the amount of the trips with the variable sample.
+* The total samples of the data is 1 million trips. You can change the amount of the trips with the variable sample at query_str.py.
 * Each arrow on the map have a particular number, that indicate the trips, so you will be able to track the Pickup and the corresponding Dropoffs.
