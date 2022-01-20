@@ -4,7 +4,7 @@
 * You will need pipenv to install the dependencies. Install with `pip install pipenv`
 * After that just run inside the repository folder `pipenv install` and all the dependencies will be installed
 * Run data_request.py file to download the data.
-* Install sql server on localhost of your server. You can change the instance of the server at the connection_class.py file at "env_str" variable.
+* Run this cmd to set up the database: "docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -e "MSSQL_PID=Express" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest".
 
 ## The Flow
 * Run enviroment.py. This py file is responsible to create the database and the table needed to storage and  process the data.

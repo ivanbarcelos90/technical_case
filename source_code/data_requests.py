@@ -16,7 +16,6 @@ def download_file(filepath):
                 f.write(chunk)
                 f.flush()
 
-
 if __name__ == '__main__':
     # Get the data from the hyperlinks and storage at the variables
     files = ['https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2009-json_corrigido.json',

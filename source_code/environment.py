@@ -44,6 +44,7 @@ files = os.listdir(trips_path)
 
 # Loop to process all the data and sent to the database.
 for file in files:
+    print(f'The {file} is processing!')
     with open(trips_path + '/' + file, 'r') as f:
         data = f.readlines()  # Read data.
     data_rmv_space = map(lambda x: x.rstrip(), data)  # Remove spaces.

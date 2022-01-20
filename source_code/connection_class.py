@@ -1,9 +1,8 @@
 # Import Packages
 from sqlalchemy import create_engine
 
-
 # Set up engine string to the sql server connection
-engine_str = 'mssql://@.\SQLEXPRESS/NYC_Taxi_Trips?driver=ODBC Driver 17 for SQL Server'
+engine_str = 'mssql://sa:yourStrong(!)Password@localhost/NYC_Taxi_Trips?driver=ODBC Driver 17 for SQL Server'
 
 
 # create a connection class for sqlalchemy engine
@@ -14,10 +13,11 @@ def connection():
 
 #  A string for connection at the database.
 env_str = """
-              Driver={SQL Server};
-              Server=.\SQLEXPRESS;
-              Trusted_Connection=yes;
-              """
+              DRIVER={ODBC Driver 17 for SQL Server};
+              SERVER=localhost;
+              UID=sa;
+              PWD=yourStrong(!)Password;
+          """
 
 # This string contain all script necessary to set up the database and tables that will be used for data processing.
 
